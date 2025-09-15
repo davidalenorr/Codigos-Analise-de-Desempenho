@@ -18,11 +18,11 @@ class LinkedList:
     #  método iterador para percorrer a lista
     def __iter__(self):
         current = self.head
-        while current:  # enquanto houver um nó atual
-            yield current  # retorna o nó atual
+        while current:  # enquanto houver um elemento atual
+            yield current  # retorna o elemnto atual
             current = current.next
 
-    # função P do txt (agora usando um método padrão do Python)
+    # função P do txt
     def __str__(self):
         return " ".join(str(node.data) for node in self)  # junta os dados em uma string
 
