@@ -1,3 +1,5 @@
+import sys
+
 # representa cada elemento da lista encadeada
 class Node:
     def __init__(self, data):
@@ -65,7 +67,7 @@ class LinkedList:
         dummy.next = self.head
         prev, current = dummy, self.head
 
-        #correção para verificar o elemento #denini
+        #correção #denini
         found = False
 
         while current:
@@ -111,6 +113,19 @@ def process_file(filename):
 
 
 # execução
-if __name__ == "__main__":
+
+#if __name__ == "__main__":
     # processa o arquivo
-    process_file("arq.txt")
+ #   process_file("arq.txt") #args ou parametros da main
+# my_script.py
+
+def main():
+    if len(sys.argv) > 1:
+        file_to_process = sys.argv[1]
+        process_file(file_to_process)  #
+    else:
+        print("Erro")
+
+
+if __name__ == "__main__":
+    main()
