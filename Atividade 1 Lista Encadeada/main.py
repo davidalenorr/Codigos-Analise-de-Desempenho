@@ -1,131 +1,121 @@
 import sys
+import time
 
-# representa cada elemento da lista encadeada
+# Representa cada elemento (nó) da lista encadeada
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
 
-
-# representa a lista encadeada
+# Representa a lista encadeada
 class LinkedList:
-
-    # começa a lista de acordo com os dados do txt, bem dizer construtor
+    # Construtor: inicializa a lista a partir de uma sequência de valores
     def __init__(self, initial_values=None):
-        self.head = None  # primeiro elemento da lista
+        self.head = None  # Primeiro elemento da lista
         if initial_values:
-            for value in initial_values:  # anda pelos valores iniciais e adiciona
+            for value in initial_values:
                 self.append(value)
 
-    #  método iterador para percorrer a lista
+    # Método iterador para percorrer a lista
     def __iter__(self):
         current = self.head
-        while current:  # enquanto houver um elemento atual
-            yield current  # retorna o elemnto atual
+        while current:
+            yield current
             current = current.next
 
-    # função P do txt
+    # Função P: Retorna a representação da lista em formato de string
     def __str__(self):
-        return " ".join(str(node.data) for node in self)  # junta os dados em uma string
+        return " ".join(str(node.data) for node in self)
 
-    # adiciona no final da lista cada elemento, se a lista tiver vazia, adiciona o primeiro elemento, caso não vai para o final da lista e adiciona o elemento
+    # Adiciona um novo elemento no final da lista
     def append(self, data):
         new_node = Node(data)
-        if not self.head:  # se a lista estiver vazia
+        if not self.head:  # Se a lista estiver vazia
             self.head = new_node
             return
-        last_node = self.head  # começa do primeiro elemento
+        last_node = self.head
         while last_node.next:
             last_node = last_node.next
         last_node.next = new_node
 
-    # função A do txt
+    # Função A: Adiciona 'data' após o nó com o valor 'position'
     def add(self, data, position):
         new_node = Node(data)
+        current = self.head
+        while current:
+            if current.data == position:
+                new_node.next = current.next
+                current.next = new_node
+                return
+            current = current.next
 
-        # se posição é 1, adiciona no início
-        if position <= 1:
-            new_node.next = self.head
-            self.head = new_node
-            return
-
-        # vai até a posição anterior à que eu quero e adiciona o elemento
-        prev = self.head
-        current_pos = 1
-        while current_pos < position - 1 and prev.next:
-            prev = prev.next
-            current_pos += 1
-
-        new_node.next = prev.next
-        prev.next = new_node
-
-    # função R do txt
+    # Função R: Remove a primeira ocorrência do nó com o valor 'data'
     def remove(self, data):
-
-        # usa um elemento fantasma para simplificar a lógica de remoção
-        dummy = Node(0)  # elemento fantasma
+        dummy = Node(0) # Nó sentinela para simplificar a remoção
         dummy.next = self.head
-        prev, current = dummy, self.head
-
-        #correção #denini
+        prev = dummy
+        current = self.head
         found = False
 
         while current:
             if current.data == data:
-                # remove o elemento ajustando o ponteiro do nó anterior
-                prev.next = current.next
+                prev.next = current.next # Remove o nó
                 found = True
-                break # utilizando para quando o elemento é encontrado
+                break # Para o loop após encontrar
 
-            # move para o proximo elemento
             prev = current
             current = current.next
 
-        self.head = dummy.next  # garante que o head esteja correto
+        self.head = dummy.next # Garante que o head esteja correto
 
-        # usado como operador logico caso não encontre ele imprime o dado errado
         if not found:
             print(f'Erro {data}')
 
-
-# função para processar o arquivo
+# Função para processar o arquivo
 def process_file(filename):
-    with open(filename, 'r') as file:
-        lines = file.read().strip().split('\n')
+    try:
+        with open(filename, 'r') as file:
+            lines = file.read().strip().split('\n')
 
-    # primeira linha: valores iniciais da lista
-    initial_values = map(int, lines[0].split())
+        # Primeira linha: valores iniciais da lista
+        initial_values = map(int, lines[0].split())
+        linked_list = LinkedList(initial_values)
 
-    # cria e inicializa a lista
-    linked_list = LinkedList(initial_values)
+        # Processa as operações a partir da terceira linha
+        for line in lines[2:]:
+            parts = line.split()
+            if not parts: continue # Ignora linhas vazias
+            command = parts[0]
 
-    # processa cada operação em um único loop
-    for line in lines[2:]:
-        parts = line.split()
-        command = parts[0]
-
-        if command == 'A':  # adicionar
-            linked_list.add(int(parts[1]), int(parts[2]))
-        elif command == 'R':  # remover
-            linked_list.remove(int(parts[1]))
-        elif command == 'P':  # imprimir
-            print(linked_list)
-
-
-# execução
-
-#if __name__ == "__main__":
-    # processa o arquivo
- #   process_file("arq.txt") #args ou parametros da main
-# my_script.py
+            if command == 'A':
+                linked_list.add(int(parts[1]), int(parts[2]))
+            elif command == 'R':
+                linked_list.remove(int(parts[1]))
+            elif command == 'P':
+                print(linked_list)
+    except FileNotFoundError:
+        print(f"Erro: O arquivo '{filename}' não foi encontrado.")
+    except Exception as e:
+        print(f"Ocorreu um erro: {e}")
 
 def main():
-    if len(sys.argv) > 1:
-        file_to_process = sys.argv[1]
-        process_file(file_to_process)  #
-    else:
-        print("Erro")
+    if len(sys.argv) < 2:
+        print("Uso: python main.py <nome_do_arquivo>")
+        return
+        
+    file_to_process = sys.argv[1]
 
+    # --- Início do Timer ---
+    start_time = time.time()
+    
+    process_file(file_to_process)
+    
+    # --- Fim do Timer ---
+    end_time = time.time()
+    duration = end_time - start_time
+    
+    print("----------------------------------------")
+    print(f"Tempo de execução (Python): {duration:.4f} segundos")
 
 if __name__ == "__main__":
     main()
