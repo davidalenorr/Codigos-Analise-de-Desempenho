@@ -8,12 +8,12 @@
 
 3º Caso queira rodar o Java 
 
-- Navegue cd .\java\
-- Complique com javac Main.java
-- Rode utilizando java Main.java arq-novo(1).txt
+- Navegue `cd .\java\`
+- Complique com `javac Main.java`
+- Rode utilizando `java Main.java arq-novo(1).txt`
 
 4º Caso queira rodar com o PHP
-- Navegue cd .\PHP\
-- Rode utilizando php main.php arq-novo(1).txt
+- Navegue `cd .\PHP\`
+- Rode utilizando `php main.php arq-novo(1).txt`
 
 5º Após os passsos a passos é esperado o codigo ser rodado e dar o tempo de execução.
