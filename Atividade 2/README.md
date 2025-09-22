@@ -8,7 +8,7 @@
 
 3º Caso queira rodar o Java 
 
-- Navegue `cd .\java\`
+- Navegue `cd .\Java\`
 - Complique com `javac Main.java`
 - Rode utilizando `java Main.java arq-novo(1).txt`
 
