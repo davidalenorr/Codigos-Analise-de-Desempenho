@@ -14,6 +14,6 @@
 
 4º Caso queira rodar com o PHP
 - Navegue cd .\PHP\
-- Rode utilizando php main.php
+- Rode utilizando php main.php arq-novo(1).txt
 
 5º Após os passsos a passos é esperado o codigo ser rodado e dar o tempo de execução.
