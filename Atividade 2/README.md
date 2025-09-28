@@ -1,19 +1,38 @@
-# Programa de tempo de execução
+# Análise de Tempo de Execução com Java e PHP
 
-## Para rodar as seguintes aplicações tenha JDK e o PHP instalado em sua maquina
+Este projeto contém implementações em Java e PHP para analisar e comparar o tempo de execução de operações, utilizando um arquivo de entrada como base.
 
-1º Baixe as pastas Java e PHP e extraia para uma pasta em um local se sua preferencia. 
+## Pré-Requisitos
 
-2º Abra o termininal do seu editor de codigo de preferencia e siga os seguintes padrões para executar:
+### Java
+-JDK (Java Development Kit) instalado (versão 8 ou superior).
 
-3º Caso queira rodar o Java 
+### PHP
+-PHP instalado.
 
-- Navegue `cd .\Java\`
-- Complique com `javac Main.java`
-- Rode utilizando `java Main.java arq-novo(1).txt`
+## Como Executar
 
-4º Caso queira rodar com o PHP
-- Navegue `cd .\PHP\`
-- Rode utilizando `php main.php arq-novo(1).txt`
+### 1. Java
+1. Navegue até o diretório da implementação Java:
+    ```bash
+    cd Java/
+    ```
+2.  Compile o arquivo `.java`:
+    ```bash
+    javac Main.java
+    ```
 
-5º Após os passsos a passos é esperado o codigo ser rodado e dar o tempo de execução.
+3.  Execute o programa, passando o caminho para o arquivo de entrada como argumento:
+    ```bash
+    java Main ../arq.txt
+    ```
+### 2. PHP
+1.  Navegue até o diretório da implementação PHP:
+    ```bash
+    cd PHP/
+    ```
+2.  Execute o script, passando o caminho para o arquivo de entrada como argumento:
+    ```bash
+    php main.php ../arq.txt
+
+Após a execução de cada programa, o tempo total de execução será impresso no terminal, permitindo a comparação de desempenho entre as duas linguagens.
