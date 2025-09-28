@@ -19,12 +19,12 @@ Este projeto contém implementações do algoritmo BubbleSort e Quicksort em Jav
 
 1.  Navegue até o diretório da implementação Java:
     ```bash
-    cd \Java Quick\
+    cd /Java Quick/
     ```
     ou
     
     ```bash
-    cd \Java Bubble\
+    cd /Java Bubble/
     ```
 3.  Compile o arquivo `.java`:
     ```bash
@@ -38,12 +38,12 @@ Este projeto contém implementações do algoritmo BubbleSort e Quicksort em Jav
 
 1.  Navegue até o diretório da implementação Python:
     ```bash
-    cd \Python\
+    cd /Python Quick/
     ```
     ou
     
     ```bash
-    cd \Java Bubble\
+    cd /Python Bubble/
     ```
 3.  Execute o script, passando o caminho para o arquivo de entrada como argumento:
     ```bash
