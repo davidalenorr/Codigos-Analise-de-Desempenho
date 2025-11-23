@@ -1,0 +1,3 @@
+docker build -t questao14 .
+
+docker run questao14       
